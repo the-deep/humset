@@ -99,9 +99,6 @@ Each document is a list of lists of strings, where each element is the text of a
 Additionally, <em>train/validation/test</em> splitted dataset is shared. The [repository] contains the code with which it is possible to process the total dataset, but the latter contains some random components which would therefore result in a slightly different result.
 
 
-* Pyserini guideline for creating BM25 baselines: <a href="https://github.com/castorini/pyserini/blob/master/docs/experiments-tripclick-doc.md" target="_blank">link</a>
-* A new set of training triples (`triples.train.tsv`) provided by Hofstätter et al.: <a href="https://github.com/sebastian-hofstaetter/tripclick" target="_blank">github</a>, <a href="https://huggingface.co/datasets/sebastian-hofstaetter/tripclick-training" target="_blank">training triples</a>
-
 ## Request access
 To gain access to HumSet, please fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSesb1-GChU4IsUadhzyn8bJPn6usyaiICoqhqEivtkJF_zBEg/viewform)
 
