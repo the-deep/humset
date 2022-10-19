@@ -1,5 +1,5 @@
 ---
-mailinglist: tripclick@jku.at
+mailinglist: 
 ---
 
 <head>
@@ -19,157 +19,96 @@ mailinglist: tripclick@jku.at
 </style>
 
 
-[paper]: https://arxiv.org/abs/2103.07901
+[paper]: https://doi.org/10.48550/arxiv.2210.04573
+[repository]: https://github.com/the-deep/humset
 
-TripClick is a large-scale dataset of click logs in the health domain, obtained from user interactions of the [Trip Database](https://www.tripdatabase.com) health web search engine. The clicklog dataset comprises approximately **5.2 million user interactions**, collected between 2013 and 2020. This dataset is accompanied with an IR evaluation benchmark and the required files to train deep learning IR models.
+HumSet is a novel and rich multilingual dataset of humanitarian response documents annotated by experts in the humanitarian response community. HumSet is curated by humanitarian analysts and covers various disasters around the globe that occurred from 2018 to 2021 in 46 humanitarian response projects. The dataset consists of approximately 17K annotated documents in three languages of English, French, and Spanish, originally taken from publicly-available resources. For each document, analysts have identified informative snippets (entries) in respect to common humanitarian frameworks, and assigned one or many classes to each entry. See the our pre-print short paper for details.
 
-**Paper:** [TripClick: The Log Files of a Large Health Web Search Engine][paper]
+**Paper:** [Humset - Dataset of Multilingual Information Extraction and Classification for Humanitarian Crisis Response][paper]
 ```
-@inproceedings{rekabsaz2021fairnessir,
-    title={TripClick: The Log Files of a Large Health Web Search Engine},
-    author={Rekabsaz, Navid and Lesota, Oleg and Schedl, Markus and Brassey, Jon and Eickhoff, Carsten},
-    booktitle={Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-    doi={10.1145/3404835.3463242},
-    pages={2507--2513},
-    year={2021},
-    publisher = {{ACM}}
+@misc{https://doi.org/10.48550/arxiv.2210.04573,
+  doi = {10.48550/ARXIV.2210.04573},
+  url = {https://arxiv.org/abs/2210.04573},
+  author = {Fekih, Selim and Tamagnone, Nicolò and Minixhofer, Benjamin and Shrestha, Ranjan and Contla, Ximena and Oglethorpe, Ewan and Rekabsaz, Navid},
+  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {HumSet: Dataset of Multilingual Information Extraction and Classification for Humanitarian Crisis Response},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
 }
 ```
+<br/><br/>
+* [Dataset](#dataset)
+  * [Additional data](#addittional-data)
 
-* [Leaderboards](#leaderboards)
-* [TripClick dataset](#tripclick-dataset)
-* [Additional resources by collaborators](#additional-resources-by-collaborators)
-* [Team and contact](#team-and-contact)
+* [Request access](#request-access)
+* [Contact](#contact)
+* [Terms and conditions](#terms-and-conditions)
+<br/><br/>
 
-## Leaderboards
+### Dataset 
 
-### HEAD Queries - DCTR
+Main dataset is shared in CSV format (<em>**humset_data.csv**</em>), where each row is considered as an <em>entry</em> with the following features: 
 
-<div class="alert bg-success text-dark" cellspacing="0">
+<div class="alert bg-success text-dark" cellspacing="0" style="width:100%">
   <table id="leaderboard_head_dctr" class="table table-bordered" cellspacing="0">
     <thead>
-      <tr><th>Date</th><th>Description</th><th>Team</th><th>NDCG@10 (val)</th><th>RECALL@10 (val)</th><th>NDCG@10 (test)</th><th>RECALL@10 (test)</th><th>Paper</th><th>Code</th></tr>
+      <tr><th>entry_id</th><th>lead_id</th><th>project_id</th><th>sectors</th><th>pillars_1d</th><th>pillars_2d</th><th>subpillars_1d</th><th>subpillars_2d<th>lang</th><th>n_tokens</th><th>project_title</th><th>created_at</th><th>document</th><th>excerpt</th></tr>
     </thead>
   </table>
 </div>
 
-### HEAD Queries - RAW
+- **entry_id**: tpyeunique identification number for a given entry. (int64)
+- **lead_id**: unique identification number for the document to which the corrisponding entry belongs. (int64)
+- **sectors**, **pillars_1d**, **pillars_2d**, **subpillars_1d**, **subpillars_2d**: labels assigned to the corresponding entry. Since this is a multi-label dataset (each entry may have several annotations belonging to the same category), they are reported as arrays of strings. For a detailed description of these categories, see the [paper]. (list)
+- **lang**: language. (str)
+- **n_tokens**: number of tokens (tokenized using NLTK v3.7 library). (int64)
+- **project_title**: the name of the project where the corresponding annotation was created. (str)
+- **created_at**: date and time of creation of the annotation in stardard ISO 8601 format. (str)
+- **document**: document URL source of the excerpt. (str)
+- **excerpt**: excerpt text. (str)
 
-<div class="alert bg-info text-dark" cellspacing="0">
-  <table id="leaderboard_head_raw" class="table table-bordered" cellspacing="0">
-    <thead>
-      <tr><th>Date</th><th>Description</th><th>Team</th><th>NDCG@10 (val)</th><th>RECALL@10 (val)</th><th>NDCG@10 (test)</th><th>RECALL@10 (test)</th><th>Paper</th><th>Code</th></tr>
-    </thead>
-  </table>
-</div>
+**Note**: 
+- **subpillars_1d** and **subpillars_2d** respective tags are reported, as strings, with the format {PILLAR}->{SUBPILLARS}, in order to underline the hierarchical structure of 1D and 2D categories. 
+<br/><br/>
+#### Addittional data
 
-### TORSO Queries - RAW
+In addition to the main dataset, documents (<em>leads</em>) full texts are also reported (<em>**documents.tar.gz**</em>). Each text source is represented JSON-formatted file ({**lead_id**}.json) with the following structure: 
+```
+[
+  [
+    paragraph 1 - page 1,
+    paragraph 2 - page 1,
+    ...
+    paragraph N - page 1
+  ],
+  [
+    paragraph 1 - page 2,
+    paragraph 2 - page 2,
+    ...
+    paragraph N - page 2
+  ],
+  [
+    ...
+  ],
+  ...
+]
+```
+Each document is a list of lists of strings, where each element is the text of a page, divided into the corresponding paragraphs. This format was used since, as indicated in the [paper], over 70% of the sources are in PDF format, thus choosing to keep the original textual subdivision. In the case of HTML web pages, the text is reported as if it belongs to a single page document.
+<br/><br/>
+Additionally, <em>train/validation/test</em> splitted dataset is shared. The [repository] contains the code with which it is possible to process the total dataset, but the latter contains some random components which would therefore result in a slightly different result.
 
-<div class="alert bg-warning text-dark" cellspacing="0">
-  <table id="leaderboard_torso_raw" class="table table-bordered" cellspacing="0">
-    <thead>
-      <tr><th>Date</th><th>Description</th><th>Team</th><th>NDCG@10 (val)</th><th>RECALL@10 (val)</th><th>NDCG@10 (test)</th><th>RECALL@10 (test)</th><th>Paper</th><th>Code</th></tr>
-    </thead>
-</table>
-</div>
-
-### TAIL Queries - RAW
-
-<div class="alert bg-danger text-dark" cellspacing="0">
-  <table id="leaderboard_tail_raw" class="table table-bordered" cellspacing="0">
-    <thead>
-      <tr><th>Date</th><th>Description</th><th>Team</th><th>NDCG@10 (val)</th><th>RECALL@10 (val)</th><th>NDCG@10 (test)</th><th>RECALL@10 (test)</th><th>Paper</th><th>Code</th></tr>
-    </thead>
-</table>
-</div>
-
-
-
-### Instruction for submitting to leaderboards
-We look forward to your submissions with the aim of fostering collaboration in the commuinty and tracking the progress on the benchmarks. To ensure the integrity of the official test results, the relevance information of the test set is not publically available. You can submit your TREC-formatted run files on the validation and test queries of all/either of the benchmarks. Please follow the instructions below for the run files submission.
-
-- Prepare run files for the test and validation queries of all/either of the HEAD, TORSO, and TAIL group in the TREC format. If you want to know about TREC format, [Joao Palotti](https://github.com/joaopalotti/trectools) provides a nice explanation and a set of useful tools.
-- The name of each run file should follow the format `[team-name]_[head/torso/tail]_[validation/test]_[datetime].run`. 
-  - `team-name` is the name of your team.
-  - `head/torso/tail` is the query set, namely `head`, `torso`, or `tail`.
-  - `datetime` The date and time of submission in `YYYYMMDD` format.
-  - `validation/test` Whether the run file is on validation (`validation`) or test (`test`) queries.
-  - An example: `myteam_head_test_20210512.run`
-- Attach the run file(s) to the email, containing the following points:
-  - To: [{{ page.mailinglist }}](mailto:{{ page.mailinglist }})
-  - Subject: submission of *team-name*
-  - Content
-    - Team: *team-name*
-    - Description: any description about the submission
-    - Paper: URL to the related paper (optional)
-    - Code: URL to the related code (optional)
-
-## TripClick dataset
-
-### How to access the dataset
-To gain access to one or more of the collection's data packages, please fill [this form](https://docs.google.com/document/d/1RHVxVnZsPBDDZMDcSvbB8VyNZDl2cn6KpeeSvIu6g_c/edit?usp=sharing) and send it to [jon.brassey@tripdatabase.com](mailto:jon.brassey@tripdatabase.com?subject=[TripClick]%20Data%20Request). In the form, please **specify needed data packages and intended use of the data**.
-
-### Logs Dataset
-The logs consist of the user interactions of the Trip search engine collected between January 2013 and October 2020. Approximately **5.2 million click log entries** from around **1.6 million search sessions** are available. The provided `logs.tar.gz` contains `allarticles.txt` which provides the titles and URLs of all documents, and the `\<YYYY>-\<MM>-\<DD>.json` files contain the log entries split by date, e.g.: `2017-03-24.json`. In the log files, each line represents a single json-formatted log record.
-
-* `logs.tar.gz`: size **871M**, MD5 checksum `1d3a548685c2fbef9b2076b0b04ba44f`
-
-| File Name | Format | Description |
-|---|---|---|
-| allarticles.txt | tsv: id	title	url | article collection |
-| \<YYYY>-\<MM>-\<DD>.json | JSON | log records |
-
-
-### Information Retrieval Collection
-The IR evaluation benchmark/collection is created from around **4 million** click log entries which refer to those documents that are indexed in the MEDLINE catalog. The collection has approximately **1.5 million documents**, and around **692,000 queries** split into three groups: HEAD, TORSO, and TAIL. The query-to-document relevance signals are derived using RAW and Document Click-Through Rate (DCTR) click-through models. See the [paper][paper] for more details. The code used to create the benchmark from log files is available [here](https://github.com/tripdatabase/tripclick/tree/main).
-
-
-To make the use of the collection easier, we provide the benchmark in two formats: TREC-style and TSV format. The contents of both formats are exactly the same. 
-
-#### TREC format
-
-* `benchmark.tar.gz`: size **930M**, MD5 checksum `6e5d3deeba138750e9a148b538f30a8f`
-
-| File Name | Format | Description |
-|---|---|---|
-| documents/docs_grp_\<*\[00-15]*>.txt | TREC format | document collection split between 16 files|
-| qrels/qrels.dctr.head.\<*\[train, val]*>.txt | qid, 0, docid, relevance | DCTR-based qrels in two files:<br />(train, val) |
-| qrels/qrels.raw.\<*\[head, torso, tail]*>.\<*\[train, val]*>.txt | qid, 0, docid, relevance | RAW-based qrels in six files:<br />(train, val)\*(head, torso, tail) |
-| topics/topics.\<*\[head, torso, tail]*>.\<*\[test, train, val]*>.txt | TREC format | Topics in nine files:<br />(test, train, val)\*(all, head, torso, tail) |
-
-#### TSV format
-
-* `benchmark_tsv.tar.gz`: size **930M**, MD5 checksum `dff5f68eed8f9574eac432ea580275f7`
-
-| File Name | Format | Description |
-|---|---|---|
-| documents/docs.tsv | docid \t doctext | documents |
-| qrels/qrels.dctr.head.\<*\[train, val]*>.tsv | qid \t 0 \t docid \t relevance | DCTR-based qrels in two files:<br />(train, val) |
-| qrels/qrels.raw.\<*\[head, torso, tail]*>.\<*\[train, val]*>.tsv | qid \t 0 \t docid \t relevance | RAW-based qrels in six files:<br />(train, val)\*(head, torso, tail) |
-| topics/topics.\<*\[head, torso, tail]*>.\<*\[test, train, val]*>.tsv | qid \t qtext | Topics in nine files:<br />(test, train, val)\*(all, head, torso, tail) |
-
-### Training package for deep learning models
-To facilitate the training of deep IR models, we also create and provide the required training files alongside the benchmark. The provided files follow a similar format to the one of the [MS MARCO](https://microsoft.github.io/msmarco/TREC-Deep-Learning-2019) collection.
-
-* `dlfiles.tar.gz`: size: **29G** MD5 checksum `1f256c19466b414e365324d8ef21f09c`
-* `dlfiles_runs_test.tar.gz`: size **35M** MD5 checksum `2b5e98c683a91e19630636b6f83e3b15`
-
-| File Name | Format | Description |
-|---|---|---|
-| run.trip.BM25.\<*\[head, torso, tail]*>.val.txt | TREC-like:<br />qid, “Q0”, docid, rank, score, runstring | Pre-ranking results, three files:<br />(**val**)\*(head, torso, tail) |
-| runs_test/run.trip.BM25.\<*\[head, torso, tail]*>.test.txt | TREC-like:<br />qid, “Q0”, docid, rank, score, runstring | Pre-ranking results, three files:<br />(**test**)*(head, torso, tail) |
-| triples.train.tsv | tsv:<br />query, pos. passage, neg. passage | Plain-text training data<br />**(size: 86G)**|
-| tuples.\<*\[head, torso, tail]*>.\<*\[test, val]*>.top200.tsv | tsv:<br />qid, pid, query, passage | test and validation sets, six files:<br />(test, val)\*(head, torso, tail)|
-
-
-## Additional resources by collaborators
 
 * Pyserini guideline for creating BM25 baselines: <a href="https://github.com/castorini/pyserini/blob/master/docs/experiments-tripclick-doc.md" target="_blank">link</a>
 * A new set of training triples (`triples.train.tsv`) provided by Hofstätter et al.: <a href="https://github.com/sebastian-hofstaetter/tripclick" target="_blank">github</a>, <a href="https://huggingface.co/datasets/sebastian-hofstaetter/tripclick-training" target="_blank">training triples</a>
 
-## Team and Contact
-For any question regarding obtaining the data and terms of use please contact [Jon Brassey](mailto:jon.brassey@tripdatabase.com?subject=[TripClick]). If you have any question regarding the technical aspects drop an email to [{{ page.mailinglist }}](mailto:{{ page.mailinglist }}).
+## Request access
+To gain access to HumSet, please fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSesb1-GChU4IsUadhzyn8bJPn6usyaiICoqhqEivtkJF_zBEg/viewform)
 
+## Contact
+For any technical question please contact [Selim Fekih](mailto:selim@datafriendlyspace.org), [Nicolò Tamagnone]((mailto:nico@datafriendlyspace.org)).
+
+<!---
 <br>
 <div class="row">
     <div class="col-md-4 text-center">
@@ -191,6 +130,7 @@ For any question regarding obtaining the data and terms of use please contact [J
         <a target="_blank" href="https://brown.edu/Research/AI/people/carsten.html"><img src="images/carsten.png" width="150" height="150"><br><strong>Carsten Eickhoff</strong><br>Brown University</a>
     </div>
 </div>
+--->
 
 ### Terms and conditions
 The provided datasets are intended for non-commercial research purposes to promote advancement in the field of natural language processing, information retrieval and related areas, and are made available free of charge without extending any license or other intellectual property rights. In particular:
@@ -201,9 +141,9 @@ The provided datasets are intended for non-commercial research purposes to promo
 Upon violation of any of these terms, my rights to use the dataset will end automatically. 
 The datasets are provided “as is” without warranty. The side granting access to the datasets is not liable for any damages related to use of the dataset.
 
-
-<img src="images/trip-logo.png" alt="TripClick logo" width="90"/>
-
+<br/><br/>
+<img src="images/dfs-logo-full-color-rgb.svg" alt="DFS logo" width="90"/>
+<!---
 <script>
   $(function(){
     var otable_leaderboard_head_dctr = $("#leaderboard_head_dctr").dataTable({
