@@ -98,7 +98,6 @@ Each document is a list of lists of strings, where each element is the text of a
 <br/><br/>
 Additionally, <em>train/validation/test</em> splitted dataset is shared. The [repository] contains the code with which it is possible to process the total dataset, but the latter contains some random components which would therefore result in a slightly different result.
 
-
 ## Request access
 To gain access to HumSet, please fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSesb1-GChU4IsUadhzyn8bJPn6usyaiICoqhqEivtkJF_zBEg/viewform)
 
