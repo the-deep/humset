@@ -143,7 +143,7 @@ The datasets are provided “as is” without warranty. The side granting access
 
 <br/><br/>
 <img src="images/dfs-logo-full-color-rgb.svg" alt="DFS logo" width="90"/>
-<!---
+
 <script>
   $(function(){
     var otable_leaderboard_head_dctr = $("#leaderboard_head_dctr").dataTable({
