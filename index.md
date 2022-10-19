@@ -1,7 +1,4 @@
-<!---
----
-mailinglist: 
----
+
 
 <head>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
@@ -19,7 +16,7 @@ mailinglist:
 }
 </style>
 
---->
+
 
 [paper]: https://doi.org/10.48550/arxiv.2210.04573
 [repository]: https://github.com/the-deep/humset
@@ -55,7 +52,7 @@ Main dataset is shared in CSV format (<em>**humset_data.csv**</em>), where each 
 <div class="alert bg-success text-dark" cellspacing="0" style="width:100%">
   <table id="leaderboard_head_dctr" class="table table-bordered" cellspacing="0">
     <thead>
-      <tr><th>entry_id</th><th>lead_id</th><th>project_id</th><th>sectors</th><th>pillars_1d</th><th>pillars_2d</th><th>subpillars_1d</th><th>subpillars_2d<th>lang</th><th>n_tokens</th><th>project_title</th><th>created_at</th><th>document</th><th>excerpt</th></tr>
+      <tr><th>entry_id</th><th>lead_id</th><th>project_id</th><th>sectors</th><th>pillars_1d</th><th>pillars_2d</th><th>subpillars_1d</th><th>subpillars_2d</th><th>lang</th><th>n_tokens</th><th>project_title</th><th>created_at</th><th>document</th><th>excerpt</th></tr>
     </thead>
   </table>
 </div>
