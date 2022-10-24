@@ -81,7 +81,7 @@ Additionally, <em>train/validation/test</em> splitted dataset is shared. The [re
 To gain access to HumSet, please fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSesb1-GChU4IsUadhzyn8bJPn6usyaiICoqhqEivtkJF_zBEg/viewform)
 
 ## Contact
-For any technical question please contact [Selim Fekih](mailto:selim@datafriendlyspace.org), [Nicolò Tamagnone]((mailto:nico@datafriendlyspace.org)).
+For any technical question please contact [Selim Fekih](mailto:selim@datafriendlyspace.org), [Nicolò Tamagnone](mailto:nico@datafriendlyspace.org).
 
 <!---
 <br>
