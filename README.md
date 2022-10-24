@@ -108,13 +108,7 @@ For any technical question please contact [Selim Fekih](mailto:selim@datafriendl
 --->
 
 ### Terms and conditions
-The provided datasets are intended for non-commercial research purposes to promote advancement in the field of natural language processing, information retrieval and related areas, and are made available free of charge without extending any license or other intellectual property rights. In particular:
-* Any parts of the datasets cannot be publicly shared or hosted (with exception for aggregated findings and visualizations);
-* The datasets can only be used for non-commercial research purposes;
-* The statistical models or any further resources created based on the datasets cannot be shared publicly without the permission of the data owners. These include for instance the weights of deep learning models trained on the provided data.
 
-Upon violation of any of these terms, my rights to use the dataset will end automatically. 
-The datasets are provided “as is” without warranty. The side granting access to the datasets is not liable for any damages related to use of the dataset.
 
 <br/><br/>
 <!--- <img src="images/dfs-logo-full-color-rgb.svg" alt="DFS logo" width="90"/> --->
