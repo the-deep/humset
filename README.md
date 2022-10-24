@@ -108,7 +108,7 @@ For any technical question please contact [Selim Fekih](mailto:selim@datafriendl
 --->
 
 ### Terms and conditions
-
+For a detailed description about terms and conditions, refer to [DEEP Terms of Use and Privacy Notice](https://app.thedeep.io/terms-and-privacy/)
 
 <br/><br/>
 <!--- <img src="images/dfs-logo-full-color-rgb.svg" alt="DFS logo" width="90"/> --->
