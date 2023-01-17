@@ -98,8 +98,7 @@ Each document is a list of lists of strings, where each element is the text of a
 Additionally, <em>train/validation/test</em> splitted dataset is shared. The [repository] contains the code with which it is possible to process the total dataset, but the latter contains some random components which would therefore result in a slightly different result.
 
 ## Request access
-To gain access to HumSet, please contact us at [nlp@thedeep.io](mailto:nlp@thedeep.io)
-
+To gain access to HumSet, please contact us at [nlp@thedeep.io](mailto:nlp@thedeep.io). HumSet and HumBert (an humanitarian-focused Language Model) are available on our [HuggingFace profile](https://huggingface.co/nlp-thedeep)
 ## Contact
 For any technical question please contact [Selim Fekih](mailto:selim@datafriendlyspace.org), [Nicolò Tamagnone]((mailto:nico@datafriendlyspace.org)).
 
