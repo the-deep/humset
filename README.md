@@ -1,19 +1,26 @@
-[paper]: https://doi.org/10.48550/arxiv.2210.04573
+[paper]: https://aclanthology.org/2022.findings-emnlp.321
 [repository]: https://github.com/the-deep/humset
 
 HumSet is a novel and rich multilingual dataset of humanitarian response documents annotated by experts in the humanitarian response community. HumSet is curated by humanitarian analysts and covers various disasters around the globe that occurred from 2018 to 2021 in 46 humanitarian response projects. The dataset consists of approximately 17K annotated documents in three languages of English, French, and Spanish, originally taken from publicly-available resources. For each document, analysts have identified informative snippets (entries) in respect to common humanitarian frameworks, and assigned one or many classes to each entry. See the our pre-print short paper for details.
 
 **Paper:** [Humset - Dataset of Multilingual Information Extraction and Classification for Humanitarian Crisis Response][paper]
 ```
-@misc{https://doi.org/10.48550/arxiv.2210.04573,
-  doi = {10.48550/ARXIV.2210.04573},
-  url = {https://arxiv.org/abs/2210.04573},
-  author = {Fekih, Selim and Tamagnone, Nicolò and Minixhofer, Benjamin and Shrestha, Ranjan and Contla, Ximena and Oglethorpe, Ewan and Rekabsaz, Navid},
-  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {HumSet: Dataset of Multilingual Information Extraction and Classification for Humanitarian Crisis Response},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {arXiv.org perpetual, non-exclusive license}
+@inproceedings{fekih-etal-2022-humset,
+    title = "{H}um{S}et: Dataset of Multilingual Information Extraction and Classification for Humanitarian Crises Response",
+    author = "Fekih, Selim  and
+      Tamagnone, Nicolo{'}  and
+      Minixhofer, Benjamin  and
+      Shrestha, Ranjan  and
+      Contla, Ximena  and
+      Oglethorpe, Ewan  and
+      Rekabsaz, Navid",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-emnlp.321",
+    pages = "4379--4389",
 }
 ```
 <br/><br/>
